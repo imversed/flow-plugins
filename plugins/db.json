@@ -9,5 +9,16 @@
     "readme": "The component prints incoming data in a JSON format.",
     "color": "",
     "url": "https://imversed.github.io/flow-plugins/plugins/c_print.html"
+  },
+  {
+    "name": "CUSTOM Print 2",
+    "group": "Common",
+    "version": "1",
+    "icon": "ti ti-print",
+    "author": "Imversed",
+    "id": "custom-print-2-imversed",
+    "readme": "The component prints incoming data in a JSON format.",
+    "color": "",
+    "url": "https://imversed.github.io/flow-plugins/plugins/test_plugin.html"
   }
 ]
