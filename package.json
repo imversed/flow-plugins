@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "node index.js"
+    "build": "node index.js",
+    "deploy": "node index.js deploy && node index.js"
   },
   "repository": "git@github.com:imversed/flow-plugins.git",
   "author": "Mark-Fulldive <mg@imversed.com>",

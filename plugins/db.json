@@ -8,6 +8,6 @@
     "id": "custom-print-imversed",
     "readme": "The component prints incoming data in a JSON format.",
     "color": "",
-    "url": "https://app.imversed.com/flow-plugins/c_print.html"
+    "url": "https://imversed.github.io/flow-plugins/plugins/c_print.html"
   }
 ]
