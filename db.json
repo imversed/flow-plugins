@@ -1,0 +1,13 @@
+[
+  {
+    "name": "CUSTOM Print",
+    "group": "Common",
+    "version": "1",
+    "icon": "ti ti-print",
+    "author": "Imversed",
+    "id": "custom-print-imversed",
+    "readme": "The component prints incoming data in a JSON format.",
+    "color": "",
+    "url": "https://app.imversed.com/flow-plugins/c_print.html"
+  }
+]
