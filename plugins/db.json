@@ -11,6 +11,17 @@
     "readme": "The component prints incoming data in a JSON format."
   },
   {
+    "name": "FullText",
+    "group": "Services",
+    "version": "1",
+    "icon": "ti ti-robot-alt",
+    "author": "Niko",
+    "color": "",
+    "url": "https://imversed.github.io/flow-plugins/plugins/readability.html",
+    "id": "fulltextrss",
+    "readme": ""
+  },
+  {
     "name": "CUSTOM Print 2",
     "group": "Common",
     "version": "1",
