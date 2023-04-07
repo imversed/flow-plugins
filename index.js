@@ -39,12 +39,16 @@ fs.readdir(PLUGINS_DIR, (err, files) => {
                         eval(`(function(module, exports) { ${jsCode} })(undefined, scriptContext.exports)`);
                         
                         if (Object.keys(scriptContext.exports).length > 0) {
-                            const { 
-                                inputs, 
-                                config, 
-                                ...plugin_meta 
-                            } = scriptContext.exports;
-
+                            var plugin_meta = {};
+                            plugin_meta.name = scriptContext.exports.name;
+                            plugin_meta.group = scriptContext.exports.group;
+                            plugin_meta.version = scriptContext.exports.version;
+                            plugin_meta.icon = scriptContext.exports.icon;
+                            plugin_meta.author = scriptContext.exports.author;
+                            plugin_meta.color = '';
+                            plugin_meta.url = `${HOST_URL}/${f}`;
+                            
+                            plugin_meta.id = scriptContext.exports.id;
                             if (!plugin_meta.id) {
                                 plugin_meta.id = (() => {
                                     const plugin_name = plugin_meta.name;
@@ -65,9 +69,6 @@ fs.readdir(PLUGINS_DIR, (err, files) => {
                                     return "";
                                 }
                             })();
-
-                            plugin_meta.color = "";
-                            plugin_meta.url = `${HOST_URL}/${f}`;
 
                             resolve(plugin_meta);
                         } else {

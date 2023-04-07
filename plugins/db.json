@@ -5,10 +5,10 @@
     "version": "1",
     "icon": "ti ti-print",
     "author": "Imversed",
-    "id": "custom-print-imversed",
-    "readme": "The component prints incoming data in a JSON format.",
     "color": "",
-    "url": "https://imversed.github.io/flow-plugins/plugins/c_print.html"
+    "url": "https://imversed.github.io/flow-plugins/plugins/c_print.html",
+    "id": "custom-print-imversed",
+    "readme": "The component prints incoming data in a JSON format."
   },
   {
     "name": "CUSTOM Print 2",
@@ -16,29 +16,20 @@
     "version": "1",
     "icon": "ti ti-print",
     "author": "Imversed",
-    "id": "custom-print-2-imversed",
-    "readme": "The component prints incoming data in a JSON format.",
     "color": "",
-    "url": "https://imversed.github.io/flow-plugins/plugins/test_plugin.html"
+    "url": "https://imversed.github.io/flow-plugins/plugins/test_plugin.html",
+    "id": "custom-print-2-imversed",
+    "readme": "The component prints incoming data in a JSON format."
   },
   {
     "name": "Tokenizer",
+    "group": "Services",
+    "version": "1",
     "icon": "ti ti-code",
     "author": "Niko",
-    "version": "1",
-    "group": "Services",
-    "outputs": [
-      {
-        "id": "output",
-        "name": "Output"
-      }
-    ],
-    "npm": [
-      "@dqbd/tiktoken"
-    ],
-    "id": "tokenizer-imversed",
-    "readme": "Count amount of tokens. Cut data if it has reached amount of maxTokens.\n\nCheck parameters to set MaxTokens in config\n\nThe component encodes incoming data into array of special_tokens.\nTokens being counted. If max amount of tokens reached, data is cut up to set amount.\nIf not, output being sent unchanged",
     "color": "",
-    "url": "https://imversed.github.io/flow-plugins/plugins/tokenizer.html"
+    "url": "https://imversed.github.io/flow-plugins/plugins/tokenizer.html",
+    "id": "tokenizer-imversed",
+    "readme": "Count amount of tokens. Cut data if it has reached amount of maxTokens.\n\nCheck parameters to set MaxTokens in config\n\nThe component encodes incoming data into array of special_tokens.\nTokens being counted. If max amount of tokens reached, data is cut up to set amount.\nIf not, output being sent unchanged"
   }
 ]
