@@ -1,0 +1,78 @@
+<script total>
+
+    exports.id = 'fulltextrss';
+    exports.name = 'FullText';
+    exports.icon = 'ti ti-robot-alt';
+    exports.author = 'Niko';
+    exports.version = '1';
+    exports.group = 'Services';
+	exports.config = {apikey: '', images: 0, xss: 1, lang: 2, links: 'remove', content: 1, parser: 'html5php'}
+    exports.inputs = [{ id: 'input', name: 'Link' }];
+    exports.outputs = [{ id: 'output', name: 'Article' }, { id: 'error', name: 'Error' }];
+
+    exports.make = function (instance, config) {
+		const URL = 'https://full-text-rss.p.rapidapi.com/extract.php';
+		var cfg;
+        instance.message = async function ($) {
+            var data = $.data;
+
+            if (!data) {
+                $.send('error', 'Input is missing');
+                return;
+            }
+
+            const request = RESTBuilder.POST(URL, { url: data, images: cfg.images, xss: cfg.xss, lang: cfg.lang, links: cfg.links, content: cfg.content, parser: cfg.parser})
+                    .urlencoded()
+                    .header('content-type', 'application/x-www-form-urlencoded')
+                    .header('X-RapidAPI-Key', cfg.apikey)
+                    .header('X-RapidAPI-Host', 'full-text-rss.p.rapidapi.com')
+                    .timeout(60000)
+                    .keepalive()
+                    .callback(function (err, response, output) {
+                    if (err) {
+                        $.send('error', err);
+                        return;
+                    }
+					if (response){
+						if (config.cutter) {
+							response = response.content;
+							response = response.replace(/<\/?[^>]+(>|$)/g, '');
+							response = response.replace(/[\n\t\r\u0000-\u001F\u007F-\u009F]/g, '').trim();
+							$.send('output', response);
+						} else {
+							$.send('output', response);
+						}
+					}
+                });
+        };
+
+        instance.configure = function () {
+            cfg = instance.replace(config);
+        };
+
+        instance.configure();
+    };
+</script>
+
+<settings>
+	<div class="padding">
+		<div class="help m"><a href="https://help.fivefilters.org/full-text-rss/usage.html#_1-article-extraction" target="_blank"><i class="ti ti-external"></i>API reference</a></div>
+		<hr />
+		<ui-component name="switchbutton" path="?.cutter" config="description:HTML Cut;border:1">Remove html elements and parse content body</ui-component>
+		<hr />
+		<ui-component name="input" path="?.apikey" config="camouflage:1;required:1">API key</ui-component>
+		<ui-component name="input" path="?.inputhtml" config="required:0">Input HTML (optional)</ui-component>
+		<ui-component name="input" path="?.content" config="type:select;dirsource:0|0, 1|html5, 2|text">Extract content (optional)</ui-component>
+		<ui-component name="input" path="?.links" config="type:select;dirsource:preserve|preserve, footnotes|footnotes, remove|remove">Extract links (optional)</ui-component>
+		<ui-component name="input" path="?.images" config="type:select;dirsource: 1|extract, 0|remove">Extract images (optional)</ui-component>
+		<ui-component name="input" path="?.xss" config="type:select;dirsource:0|disable xss filtering, 1|enable xss filtering">XSS filtering (optional)</ui-component>
+		<ui-component name="input" path="?.lang" config="type:select;dirsource:0|ignore language, 1|use article metadata, 2|guess language if not specified, 3|always guess">Language detection (optional)</ui-component>
+		<ui-component name="input" path="?.parser" config="type:select;dirsource:html5php|html5php, libxml|libxml ">Parser (optional)</ui-component>
+	</div>
+</settings>
+
+<body>
+    <header>
+        <i class="ICON"></i>NAME
+    </header>
+</body>
